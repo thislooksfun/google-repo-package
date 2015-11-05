@@ -34,7 +34,16 @@ module.exports =
   ignoreDotRepo: ->
     end = @traverseTree @treeRoot, pathMod.join(@treeRoot.path, ".repo")
     return unless end?
-    @setStatus(end, "ignored")
+    @ignoreAllIn end
+  
+  ignoreAllIn: (dir) ->
+    @setStatus(dir, "ignored")
+    
+    for k, v of dir.entries
+      if v.entries?
+        @ignoreAllIn v
+      else
+        @setStatus(v, "ignored")
   
   
   updateItem: (item, repo) ->

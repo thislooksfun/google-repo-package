@@ -5,7 +5,7 @@
   "description": "Allows git-like visuals for google repo projects",
   "keywords": [],
   "activationCommands": {},
-  "repository": "https://github.com/thislooksfun/google-repo",
+  "repository": "https://github.com/thislooksfun/google-repo-package",
   "license": "MIT",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"

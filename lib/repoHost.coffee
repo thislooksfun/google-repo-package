@@ -44,7 +44,6 @@ module.exports =
       repo.isPathNew(item.path)
     
     if item.isDirectory()
-      return if item.path.indexOf(".git") > -1
       @_crawl entry, repo, isInit for entry in item.getEntriesSync()
   
   
