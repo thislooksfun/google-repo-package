@@ -1,0 +1,20 @@
+{
+  "name": "google-repo",
+  "main": "./lib/main",
+  "version": "0.0.0",
+  "description": "Allows git-like visuals for google repo projects",
+  "keywords": [],
+  "activationCommands": {},
+  "repository": "https://github.com/thislooksfun/google-repo",
+  "license": "MIT",
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "dependencies": {
+    "atom-package-dependencies": "latest",
+    "atom-utils": "^0.7.4",
+    "pathwatcher": "^6.3.0",
+    "xml2js": "^0.4.15"
+  },
+  "package-dependencies": {}
+}
