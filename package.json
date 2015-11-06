@@ -3,7 +3,11 @@
   "main": "./lib/main",
   "version": "1.1.4",
   "description": "Allows git-like visuals for google repo projects",
-  "keywords": [],
+  "keywords": [
+    "google",
+    "repo",
+    "google-repo"
+  ],
   "activationCommands": {},
   "repository": "https://github.com/thislooksfun/google-repo-package",
   "license": "MIT",
