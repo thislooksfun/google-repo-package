@@ -6,7 +6,7 @@
   "keywords": [],
   "activationCommands": {},
   "repository": "https://github.com/thislooksfun/google-repo-package",
-  "license": "MIT",
+  "license": "GPL v2",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
   },
