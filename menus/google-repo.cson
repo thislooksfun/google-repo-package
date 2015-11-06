@@ -1,20 +1,13 @@
 # See https://atom.io/docs/latest/hacking-atom-package-word-count#menus for more details
-'context-menu':
-  'atom-text-editor': [
-    {
-      'label': 'Toggle google-repo'
-      'command': 'google-repo:toggle'
-    }
-  ]
 'menu': [
   {
     'label': 'Packages'
     'submenu': [
-      'label': 'google-repo'
+      'label': 'Google Repo'
       'submenu': [
         {
-          'label': 'Toggle'
-          'command': 'google-repo:toggle'
+          'label': 'Refresh'
+          'command': 'google-repo:refresh'
         }
       ]
     ]

@@ -1,26 +1,29 @@
 {requirePackages}     = require 'atom-utils'
 {CompositeDisposable} = require 'atom'
 repoHost              = require './repoHost'
+graphics              = require './graphicIntegrationOverride'
 
 module.exports = GoogleRepo =
   googleRepoView: null
   subscriptions: null
 
+  # Power up the module
   activate: (state) ->
-    # Events subscribed to in atom's system can be easily cleaned up with a CompositeDisposable
     @subscriptions = new CompositeDisposable
-    
-    # Register command that toggles this view
     @subscriptions.add atom.commands.add 'atom-workspace', 'google-repo:refresh': => @refresh()
     
-    requirePackages("tree-view").then ([tree]) =>
+    # Wait for 'tree-view' and 'status-bar' to load before continuing
+    requirePackages("tree-view", "status-bar").then ([tree, statusBar]) =>
       root = tree.treeView.list[0].querySelector('.project-root').directory
-      repoHost.start root
-
+      repoHost.start root, =>            # Start the trackers
+        graphics.override statusBar.git  # Initalize the overrides
+  
+  # Deactivate everything
   deactivate: ->
-    @subscriptions.dispose()
-    repoHost.stop()
-
+    @subscriptions.dispose()  # Throw away subscriptions
+    repoHost.stop()           # Clean up logic
+  
+  # Reload everything except the command subscriptions
   refresh: ->
     repoHost.stop()
     tree = atom.packages.getLoadedPackage("tree-view").mainModule
