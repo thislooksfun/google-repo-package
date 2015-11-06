@@ -24,7 +24,7 @@ module.exports =
           rootPath = repoHost.getRootDir().path                        #     Get the root path of this project
           repoLocation = pathMod.dirname(repo.path)                    #     Get the absolute directory the repo is located in
           repoLoc = pathMod.relative(rootPath, repoLocation)           #     Get the relative location between 'rootPath' and 'repoLocation'
-          @gitItem.branchLabel.textContent = "#{repoLoc}/#{head}"      #     Set the branch display text
+          @gitItem.branchLabel.textContent = "#{repoLoc}/#{head}"      #     Set the branch display text (TODO: maybe split this up into it's own 'area', complete w/ repo icon?)
           @gitItem.branchArea.style.display = ''                       #     Unhide the branch display
     
     @gitItem.update()  # Force update to fully incorperate the new functions
