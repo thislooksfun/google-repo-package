@@ -35,7 +35,7 @@ module.exports =
   scanAll: (isInit) ->
     updater.ignoreDotRepo()                                # Set '.repo' and '.repo/*' to show as ignored
     promise = new Promise (resolve, reject) =>             # Create a new promise
-      for dir, repo of @_repos                              # For every loaded repo...
+      for dir, repo of @_repos                             # For every loaded repo...
         @_crawl(new Directory(dir), repo, isInit ? false)  #   Crawl through the directory associated with it
       resolve()                                            # Resolve when done
     
@@ -56,7 +56,7 @@ module.exports =
   
   # Get the repository associated with this path
   getRepoForPath: (path) ->
-    for dir, repo of @_repos                  # For each item in the '@_repos' assoc array...
+    for dir, repo of @_repos                 # For each item in the '@_repos' assoc array...
       return repo if path.indexOf(dir) > -1  #   Return if the path matches
       
     return null  # If no repo was found, return null
@@ -86,7 +86,7 @@ module.exports =
               @subscriptions.add repo.onDidChangeStatus   => @scanAll().then => updater.registerExpandListeners()  #   Start tracking single file changes
               @subscriptions.add repo.onDidChangeStatuses => @scanAll().then => updater.registerExpandListeners()  #   Start tracking multiple file changes
             
-            dec()  # Callback to say this one is done
+            dec()  # Callback to say this collector is done
   
   
   # Gets the parser instance

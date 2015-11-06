@@ -42,7 +42,7 @@ module.exports =
   # Set the state of '[root]/.repo' and all it's children to be 'ignored'
   ignoreDotRepo: ->
     end = @traverseTree @treeRoot, pathMod.join(@treeRoot.path, ".repo")  # Get the '.repo' folder element
-    @ignoreAllIn end if end?  # Call '@ignoreAllIn' on this directory, if it exists
+    @ignoreAllIn end if end?                                              # Call '@ignoreAllIn' on this directory, if it exists
   
   
   # Ignore all files in, and including, this directory
