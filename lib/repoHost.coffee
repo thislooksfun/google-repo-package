@@ -7,6 +7,7 @@ pathMod               = require 'path'
 # Home of all the repository and filesystem based logic
 module.exports =
 class RepoHost
+  # Allow for creation of this class - intentionally empty
   constructor: ->
     
   
@@ -76,9 +77,9 @@ class RepoHost
     
     mnfst = @getRootDir().getSubdirectory(".repo").getFile("manifest.xml")  # Get the manifest file
     
-    done = =>
-      @emitter.emit "repo-list-change"
-      cb()
+    done = =>  # Group a couple items to execute once all collectors are finished
+      @emitter.emit "repo-list-change"  # Fire the 'repo-list-change' event
+      cb()                              # Execute the callback
     
     mnfst.read(false).then (contents) =>  # Read the manifest file, then...
       @getParser().parseString contents, (err, res) =>  # Parse the manifest as XML

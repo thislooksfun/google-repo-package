@@ -4,13 +4,16 @@ RepoHost                       = require './repoHost'
 GraphicsOverride               = require './graphicIntegrationOverride'
 PluginManagement               = require './mixins/plugin-management'
 
+# Use classes to allow 'includeInto' to work
 class Main
+  # Includes the PluginManagement items into this class - useful for separating chunks of code into separate files
   PluginManagement.includeInto(this)
   
   
   subscriptions: null  # The subscriptions we have
-  emitter: null
-  host: null
+  emitter: null        # The event emitter
+  host: null           # The RepoHost instance - used for plugin access
+  
   
   # Power up the module
   activate: (state) ->
@@ -18,7 +21,7 @@ class Main
     
     @subscriptions.add atom.commands.add 'atom-workspace', 'google-repo:refresh': => @refresh()  # Add the refresh command
     
-    @emitter = new Emitter
+    @emitter = new Emitter  # Create a new emitter
     
     @host = new RepoHost  # Create the RepoHost instance
     
@@ -30,8 +33,9 @@ class Main
         @graphics.override()          # Initalize the overrides
   
   
+  # Executes 'cb' when the list of collected repositories is updated
   onRepoListChange: (cb) ->
-    @emitter.on "repo-list-change", cb
+    @emitter.on "repo-list-change", cb  # Register 'cb' to be called on the 'repo-list-change' event
   
   
   # Deactivate everything
@@ -53,4 +57,4 @@ class Main
       @graphics.override  # Initalize the overrides
 
 
-module.exports = new Main()
+module.exports = new Main()  # Set the exports to an new instance

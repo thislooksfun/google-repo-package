@@ -3,6 +3,7 @@ pathMod  = require 'path'
 # Override functions to allow for branch/status tracking in bottom right
 module.exports =
 class GraphicsOverride
+  # Constructor - sets the @host and @gitItem properties
   constructor: (@host, @gitItem) ->
   
   # Wrapper for @_overrideRepoFunctions
