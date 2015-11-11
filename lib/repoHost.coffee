@@ -6,8 +6,12 @@ pathMod               = require 'path'
 
 # Home of all the repository and filesystem based logic
 module.exports =
+class RepoHost
+  constructor: ->
+    
+  
   # Initalizes all the logic
-  start: (@root, onDone) ->
+  start: (@root, @emitter, onDone) ->
     @getRootDir().getSubdirectory(".repo").exists().then (exists) =>  # Check if there is a directory at '[root]/.repo'
       @_beginLoad(onDone) if exists                                   # If there is, then start the loading process
   
@@ -72,10 +76,14 @@ module.exports =
     
     mnfst = @getRootDir().getSubdirectory(".repo").getFile("manifest.xml")  # Get the manifest file
     
+    done = =>
+      @emitter.emit "repo-list-change"
+      cb()
+    
     mnfst.read(false).then (contents) =>  # Read the manifest file, then...
       @getParser().parseString contents, (err, res) =>  # Parse the manifest as XML
         cnt = res.manifest.project.length  # Store how many repos we need to search through, to allow for async callbacks
-        dec = -> cb() if --cnt <= 0        # Create a method to tell us how many async processes have finished
+        dec = -> done() if --cnt <= 0      # Create a method to tell us how many async processes have finished
         
         for proj in res.manifest.project                           # For each project...
           abspth = pathMod.join(@getRootDir().path, proj.$.path)   #   Get the absolute path
