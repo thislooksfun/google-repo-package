@@ -7,6 +7,6 @@ This package adds the in-built file tree highlighting to git repositories manage
 ## Sub-modules
 
 To add even more power, check out the following plugins for this package:
- * diff - _(This module is still under construction)_
+ * [diff](https://atom.io/packages/google-repo-diff)
  * diff-minimap - _(This module is still under construction)_
  * utils - _(This module is still under construction)_
