@@ -1,3 +1,6 @@
+## 1.2.1
+* Added link to 'google-repo-diff'
+
 ## 1.2.0
 * Reformatted to allow plugins
 * Actually updated changelog
