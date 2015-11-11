@@ -9,4 +9,4 @@ This package adds the in-built file tree highlighting to git repositories manage
 To add even more power, check out the following plugins for this package:
  * diff - _(This module is still under construction)_
  * diff-minimap - _(This module is still under construction)_
- * commands - _(This module is still under construction)_
+ * utils - _(This module is still under construction)_
