@@ -21,7 +21,7 @@ class PluginManagement extends Mixin
   registerPlugin: (name, plugin) ->
     @plugins[name] = plugin
     
-    plugin.activatePlugin()
+    plugin.gRepo_activatePlugin()
 
   # Unregisters a plugin from the minimap.
   #
@@ -41,13 +41,13 @@ class PluginManagement extends Mixin
   #           current state.
   togglePluginActivation: (name, boolean=undefined) ->
     plugin = @plugins[name]
-    pluginActive = plugin.isActive()
+    pluginActive = plugin.gRepo_isActive()
     
     if boolean or not pluginActive
-      plugin.activatePlugin()
+      plugin.gRepo_activatePlugin()
     else
-      plugin.deactivatePlugin()
+      plugin.gRepo_deactivatePlugin()
 
   # Deactivates all the plugins registered in the minimap package so far.
   deactivateAllPlugins: ->
-    plugin.deactivatePlugin() for name, plugin of @plugins
+    plugin.gRepo_deactivatePlugin() for name, plugin of @plugins
