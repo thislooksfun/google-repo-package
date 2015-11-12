@@ -1,3 +1,6 @@
+## 1.3.0
+* Made plugin activation and deactivation function google-repo specific
+
 ## 1.2.1
 * Added link to 'google-repo-diff'
 
