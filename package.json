@@ -3,12 +3,12 @@
   "main": "./lib/main",
   "version": "1.2.1",
   "description": "Allows git-like visuals for google repo projects",
+  "author": "thislooksfun",
   "keywords": [
     "google",
     "repo",
     "google-repo"
   ],
-  "activationCommands": {},
   "repository": "https://github.com/thislooksfun/google-repo-package",
   "license": "MIT",
   "engines": {
