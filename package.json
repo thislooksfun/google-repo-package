@@ -1,7 +1,7 @@
 {
   "name": "google-repo",
   "main": "./lib/main",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "description": "Allows git-like visuals for google repo projects",
   "author": "thislooksfun",
   "keywords": [
