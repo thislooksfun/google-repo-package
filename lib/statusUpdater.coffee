@@ -1,3 +1,4 @@
+{$}                   = require 'atom-space-pen-views'
 {CompositeDisposable} = require 'atom'
 pathMod               = require 'path'
 
@@ -92,6 +93,11 @@ module.exports =
       @setStatus(end, null)  #   Clear the status of this file
       return                 #   Return - no point sticking around
     
+    if pathMod.dirname(repo.path) == end.path
+      item = $("span[data-path='"+end.path+"']")[0]
+      item.classList.remove("icon-file-directory")
+      item.classList.add("icon-repo")
+    
     status = repo.getDirectoryStatus dir.path                 # Get the state of this directory
     newStatus = null                                          # Start off with the new status being cleared
     newStatus = "modified" if repo.isStatusModified status    # If the directory was modifed, then set the state to 'modified'
@@ -108,7 +114,7 @@ module.exports =
     item.emitter.emit("did-status-change", state)  # Fire an event to let the display know to re-render this item
   
   
-  # Gets an element relative to the root dir, or 'null' that item isn't visible
+  # Gets an element relative to the root dir, or 'null' if that item isn't visible
   traverseTree: (tree, dest) ->
     rel = pathMod.relative(tree.path, dest)  # The relative path to find
     parts = rel.split(pathMod.sep)           # Each step of the relative path

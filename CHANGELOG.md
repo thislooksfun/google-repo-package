@@ -1,3 +1,6 @@
+## 1.3.2
+* Made repository folders show the repository icon in the tree view
+
 ## 1.3.1
 * Added link to 'google-repo-diff-minimap'
 
