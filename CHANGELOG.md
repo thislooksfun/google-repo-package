@@ -1,4 +1,4 @@
-## 1.3.2
+## 1.4.0
 * Made repository folders show the repository icon in the tree view
 
 ## 1.3.1
